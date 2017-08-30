@@ -20,7 +20,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://angular-node-mean.herokuapp.com/message' + token, body, {headers: headers})
+        return this.http.post('https://angular-node-mean.herokuapp.com/message' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
                 const message = new Message(
@@ -38,7 +38,7 @@ export class MessageService {
     }
 
     getMessages() {
-        return this.http.get('http://angular-node-mean.herokuapp.com/message')
+        return this.http.get('https://angular-node-mean.herokuapp.com/message')
             .map((response: Response) => {
                 const messages = response.json().obj;
                 let transformedMessages: Message[] = [];
@@ -69,7 +69,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.patch('http://angular-node-mean.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
+        return this.http.patch('https://angular-node-mean.herokuapp.com/message/' + message.messageId + token, body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
@@ -82,7 +82,7 @@ export class MessageService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.delete('http://angular-node-mean.herokuapp.com/message/' + message.messageId + token)
+        return this.http.delete('https://angular-node-mean.herokuapp.com/message/' + message.messageId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => {
                 this.errorService.handleError(error.json());
