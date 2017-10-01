@@ -12,7 +12,8 @@ var userRoutes = require('./routes/user');
 
 var app = express();
 // mongoose.connect('localhost:27017/node-angular');
-mongoose.connect('test-user:test-user@ds111124.mlab.com:11124/angular-node-mean');
+// mongoose.connect('test-user:test-user@ds111124.mlab.com:11124/angular-node-mean');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/node-angular' );
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
